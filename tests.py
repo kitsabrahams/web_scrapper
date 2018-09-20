@@ -15,7 +15,7 @@ class Test(unittest.TestCase):
         (1, "genre", "Action, Adventure, Horror, Now Showing"),
         (2, "title", "CRAZY RICH ASIANS"),
         (4, "duration", "01 hours 42 minutes"),
-        (5, "title", "THE EQUALIZER 2"),
+        (5, "title", "THE EQUALIZER ggi2"),
         (5, "release_date", "Aug 09, 2018"),
         (8, "title", "THE SPY WHO DUMPED ME"),
     ]
