@@ -13,7 +13,7 @@ class Test(unittest.TestCase):
     data = [
         (1, "showtime", "MON - THUR: 10:30AM, 3:00PM, 9:30PM"),
         (1, "genre", "Action, Adventure, Horror, Now Showing"),
-        (4, "duration", "01 hours 42 minutes"),
+        (2, "title", "CRAZY RICH ASIANS"),
         (4, "duration", "01 hours 42 minutes"),
         (5, "title", "THE EQUALIZER 2"),
         (5, "release_date", "Aug 09, 2018"),
