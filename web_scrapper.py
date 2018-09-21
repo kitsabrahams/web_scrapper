@@ -56,7 +56,7 @@ class Movie:
             self.set_release_date()
             self.set_language()
         except Exception as e:
-            print('Html Parsing error: {}'.format(str(e)))
+            print('This Item has an Error: {}'.format(str(e)))
 
     def set_genre(self):
         note = self.item.find('div', attrs={'class': 'note'})
@@ -87,6 +87,6 @@ class Movie:
                      "genre": self.genre, "language": self.language})
 
 
-def clean(str):
+def clean(string):
     # replace multi-spaces, remove leading and trailing spaces from a string
-    return re.sub(' +', ' ', str.strip())
+    return re.sub(' +', ' ', string.strip())
