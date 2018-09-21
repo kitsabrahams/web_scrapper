@@ -44,11 +44,10 @@ class Movie:
 
     def set_fields(self):
         # title and duration are on the same html tree level
+        # all value strings are cleaned before assignment
         try:
-            # replace multi-spaces, remove leading and trailing spaces from a string
-            self.title = re.sub(' +', ' ', (self.item.find('a')).text.strip())
-            self.duration = re.sub(' +', ' ',
-                (self.item.find('div', attrs={'class': 'entry-date'})).text.strip())
+            self.title = clean((self.item.find('a')).text)
+            self.duration = clean((self.item.find('div', attrs={'class': 'entry-date'})).text)
             # showtime is on the same tree but it's divided into two
             self.set_showtime()
             # genre if on one level deeper and has values <a> tags
@@ -64,24 +63,24 @@ class Movie:
         note = self.item.find('div', attrs={'class': 'note'})
         genres = []
         for genre in note.findAll('a'):
-            genres.append(re.sub(' +', ' ', genre.text.strip()))
+            genres.append(clean(genre.text))
         self.genre = ", ".join(genres)
 
     def set_showtime(self):
         scope = self.item.find('p', attrs={'class': 'cinema_page_showtime'})
         days = (scope.find('span')).text
         time = (scope.select('strong')[1]).text
-        self.showtime = re.sub(' +', ' ', (days + time).strip())
+        self.showtime = clean(days + time)
 
     def set_language(self):
         scope = self.item.find('div', attrs='desc-mv')
         language = (scope.findAll('div'))[2].text
-        self.language = language.replace('Language:', '').strip()
+        self.language = clean(language.replace('Language:', ''))
 
     def set_release_date(self):
         scope = self.item.find('div', attrs='desc-mv')
         release = (scope.findAll('div'))[0].text
-        self.release_date = release.replace('Release:', '').strip()
+        self.release_date = clean(release.replace('Release:', ''))
 
     def __repr__(self):
         return repr({"title": self.title, "release_date": self.release_date,
@@ -89,3 +88,6 @@ class Movie:
                      "genre": self.genre, "language": self.language})
 
 
+def clean(str):
+    # replace multi-spaces, remove leading and trailing spaces from a string
+    return re.sub(' +', ' ', str.strip())

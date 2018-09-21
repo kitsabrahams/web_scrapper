@@ -9,7 +9,7 @@ class Test(unittest.TestCase):
     """
 
     url = 'https://silverbirdcinemas.com/cinema/accra/'
-    # fixture has to changed according to the website
+    # fixture has to be changed according to the current website content
     data = [
         (1, "showtime", "FRI - SUN: 12:10PM, 2:00PM, 3:50PM, 5:40PM, 7:30PM, 9:30PM"),
         (1, "genre", "Action, Adventure, Now Showing"),
