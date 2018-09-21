@@ -1,5 +1,5 @@
 import unittest
-from web_scrapper import WebScrapperService
+from web_scrapper import WebScrapperService, clean
 
 
 class Test(unittest.TestCase):
@@ -11,7 +11,7 @@ class Test(unittest.TestCase):
     url = 'https://silverbirdcinemas.com/cinema/accra/'
     # fixture has to be changed according to the current website content
     data = [
-        (1, "showtime", "FRI - SUN: 12:10PM, 2:00PM, 3:50PM, 5:40PM, 7:30PM, 9:30PM"),
+        (1, "showtime", "FRI - SUN:  12:10PM, 2:00PM, 3:50PM, 5:40PM, 7:30PM, 9:30PM"),
         (1, "genre", "Action, Adventure, Comedy, Now Showing"),
         (2, "title", "A SIMPLE FAVOR"),
         (4, "duration", "02 hours 01 minutes"),
@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
 
         for n, attr, expected in self.data:
             # testing each tuple case in the Test data
-            self.assertEqual(result[n-1].__getattribute__(attr).lower(), expected.lower())
+            self.assertEqual(result[n-1].__getattribute__(attr).lower(), clean(expected.lower()))
 
 
 if __name__ == "__main__":
