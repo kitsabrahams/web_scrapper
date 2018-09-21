@@ -45,8 +45,10 @@ class Movie:
     def set_fields(self):
         # title and duration are on the same html tree level
         try:
-            self.title = (self.item.find('a')).text.strip()
-            self.duration = (self.item.find('div', attrs={'class': 'entry-date'})).text.strip()
+            # replace multi-spaces, remove leading and trailing spaces from a string
+            self.title = re.sub(' +', ' ', (self.item.find('a')).text.strip())
+            self.duration = re.sub(' +', ' ',
+                (self.item.find('div', attrs={'class': 'entry-date'})).text.strip())
             # showtime is on the same tree but it's divided into two
             self.set_showtime()
             # genre if on one level deeper and has values <a> tags
@@ -62,7 +64,6 @@ class Movie:
         note = self.item.find('div', attrs={'class': 'note'})
         genres = []
         for genre in note.findAll('a'):
-            # replace multi-spaces, remove leading and trailing spaces
             genres.append(re.sub(' +', ' ', genre.text.strip()))
         self.genre = ", ".join(genres)
 
@@ -70,7 +71,6 @@ class Movie:
         scope = self.item.find('p', attrs={'class': 'cinema_page_showtime'})
         days = (scope.find('span')).text
         time = (scope.select('strong')[1]).text
-        # replace multi-spaces, remove leading and trailing spaces
         self.showtime = re.sub(' +', ' ', (days + time).strip())
 
     def set_language(self):
