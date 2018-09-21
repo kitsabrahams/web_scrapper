@@ -12,4 +12,5 @@ or<br>
 $ pip install requests BeautifulSoup4<br>
 
 <b>Test</b> <br>
+data fixture has to be changed according to the current website content<br>
 $ python test.py<br>
