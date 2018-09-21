@@ -29,7 +29,6 @@ class WebScrapperService:
         movies = []
         for item in soup.select('div#cinema-m div.entry-content'):
             movie = Movie(item)
-            print(movie)
             movies.append(movie)
         return movies
 
