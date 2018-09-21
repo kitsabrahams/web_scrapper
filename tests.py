@@ -9,10 +9,10 @@ class Test(unittest.TestCase):
     """
 
     url = 'https://silverbirdcinemas.com/cinema/accra/'
-    # fixture
+    # fixture has to changed according to the website
     data = [
-        (1, "showtime", "MON - THUR: 10:30AM, 3:00PM, 9:30PM"),
-        (1, "genre", "Action, Adventure, Horror, Now Showing"),
+        (1, "showtime", "FRI - SUN: 12:10PM, 2:00PM, 3:50PM, 5:40PM, 7:30PM, 9:30PM"),
+        (1, "genre", "Action, Adventure, Now Showing"),
         (2, "title", "CRAZY RICH ASIANS"),
         (4, "duration", "01 hours 42 minutes"),
         (5, "title", "THE EQUALIZER 2"),
@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
         # print(result)
 
         # first test checks if the returned number of movies is nine
-        self.assertEqual(len(result), 9)
+        self.assertEqual(len(result), 10)
 
         for n, attr, expected in self.data:
             # testing each tuple case in the Test data
