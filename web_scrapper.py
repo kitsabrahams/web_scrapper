@@ -88,5 +88,10 @@ class Movie:
 
 
 def clean(string):
-    # replace multi-spaces, remove leading and trailing spaces from a string
+    """
+    Helper function for replacing multi-spaces with a single space,
+    removes leading and trailing spaces
+    :param string:
+    :return: 
+    """
     return re.sub(' +', ' ', string.strip())
