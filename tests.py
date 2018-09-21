@@ -12,12 +12,12 @@ class Test(unittest.TestCase):
     # fixture has to be changed according to the current website content
     data = [
         (1, "showtime", "FRI - SUN: 12:10PM, 2:00PM, 3:50PM, 5:40PM, 7:30PM, 9:30PM"),
-        (1, "genre", "Action, Adventure, Now Showing"),
-        (2, "title", "CRAZY RICH ASIANS"),
-        (4, "duration", "01 hours 42 minutes"),
-        (5, "title", "THE EQUALIZER 2"),
-        (5, "release_date", "Aug 09, 2018"),
-        (8, "title", "THE SPY WHO DUMPED ME"),
+        (1, "genre", "Action, Adventure, Comedy, Now Showing"),
+        (2, "title", "A SIMPLE FAVOR"),
+        (4, "duration", "02 hours 01 minutes"),
+        (5, "title", "THE NUN"),
+        (5, "release_date", "Sep 07, 2018"),
+        (8, "title", "THE MEG"),
     ]
 
     def test_web_scrapper(self):
@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
 
         for n, attr, expected in self.data:
             # testing each tuple case in the Test data
-            self.assertEqual(result[n-1].__getattribute__(attr), expected)
+            self.assertEqual(result[n-1].__getattribute__(attr).lower(), expected.lower())
 
 
 if __name__ == "__main__":
